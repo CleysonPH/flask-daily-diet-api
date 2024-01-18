@@ -31,3 +31,12 @@ def get_by_id(id):
     if meal:
         return meal.to_dict()
     return {"message": "Meal not found"}, 404
+
+
+@bp.route("/<int:id>", methods=("DELETE",))
+def delete(id):
+    meal = MealRepository.get_by_id(id)
+    if meal:
+        MealRepository.delete(meal)
+        return {}, 204
+    return {"message": "Meal not found"}, 404

@@ -38,3 +38,19 @@ def test_get_meal_by_id_not_found(client):
     response = client.get("/api/meals/1")
     assert response.status_code == 404
     assert response.json["message"] == "Meal not found"
+
+
+def test_delete_meal(client, meals):
+    meal = meals[0]
+    response = client.delete(f"/api/meals/{meal.id}")
+    assert response.status_code == 204
+    assert response.data == b""
+    response = client.get(f"/api/meals/{meal.id}")
+    assert response.status_code == 404
+    assert response.json["message"] == "Meal not found"
+
+
+def test_delete_meal_not_found(client):
+    response = client.delete("/api/meals/1")
+    assert response.status_code == 404
+    assert response.json["message"] == "Meal not found"
