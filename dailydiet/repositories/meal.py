@@ -18,3 +18,7 @@ class MealRepository:
     @staticmethod
     def get_all():
         return Meal.query.all()
+
+    @staticmethod
+    def get_by_id(id):
+        return Meal.query.get(id)
