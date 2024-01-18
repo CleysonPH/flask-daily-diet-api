@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flask-daily-diet-api"
-version = "0.1.0"
+version = "0.2.0"
 description = "API para controle de dieta diária"
 authors = ["Cleyson <cleysonph@gmail.com>"]
 readme = "README.md"
