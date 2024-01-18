@@ -23,3 +23,18 @@ def test_get_all_meals(client, meals):
             and m["description"] == meal.description
             for m in response.json["meals"]
         )
+
+
+def test_get_meal_by_id(client, meals):
+    meal = meals[0]
+    response = client.get(f"/api/meals/{meal.id}")
+    assert response.status_code == 200
+    assert response.json["id"] == meal.id
+    assert response.json["name"] == meal.name
+    assert response.json["description"] == meal.description
+
+
+def test_get_meal_by_id_not_found(client):
+    response = client.get("/api/meals/1")
+    assert response.status_code == 404
+    assert response.json["message"] == "Meal not found"
