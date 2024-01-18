@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import Blueprint, request
 
 from dailydiet.repositories.meal import MealRepository
@@ -11,7 +13,7 @@ def create():
     meal = MealRepository.create(
         name=data["name"],
         description=data["description"],
-        datetime=data["datetime"],
+        datetime=datetime.fromisoformat(data["datetime"]),
         in_diet=data["in_diet"],
     )
     return meal.to_dict(), 201
