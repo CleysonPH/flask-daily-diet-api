@@ -14,3 +14,7 @@ class MealRepository:
         db.session.add(meal)
         db.session.commit()
         return meal
+
+    @staticmethod
+    def get_all():
+        return Meal.query.all()
