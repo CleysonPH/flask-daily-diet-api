@@ -18,3 +18,12 @@ class Meal(db.Model):
 
     def __repr__(self):
         return f"<Meal {self.id}>"
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "description": self.description,
+            "datetime": self.datetime.isoformat(),
+            "in_diet": self.in_diet,
+        }

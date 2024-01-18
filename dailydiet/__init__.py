@@ -14,8 +14,9 @@ def create_app():
     database.init_app(app)
     migrate.init_app(app)
 
-    from dailydiet.routers import ping
+    from dailydiet.routers import meals, ping
 
     app.register_blueprint(ping.bp)
+    app.register_blueprint(meals.bp)
 
     return app
