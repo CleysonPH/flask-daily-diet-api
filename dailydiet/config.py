@@ -1,9 +1,14 @@
 import os
 
-BASEDIR = os.path.abspath(os.path.dirname(__file__))
-
 
 class Config:
     DEBUG = os.environ.get("FLASK_DEBUG", False)
-    SECRET_KEY = os.environ["SECRET_KEY"]
-    SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
+    SECRET_KEY = os.environ.get("SECRET_KEY", None)
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL", None)
+
+
+class TestConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
+    SECRET_KEY = "test"
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
