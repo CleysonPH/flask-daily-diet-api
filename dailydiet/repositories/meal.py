@@ -27,3 +27,12 @@ class MealRepository:
     def delete(meal):
         db.session.delete(meal)
         db.session.commit()
+
+    @staticmethod
+    def update(meal, name, description, datetime, in_diet):
+        meal.name = name
+        meal.description = description
+        meal.datetime = datetime
+        meal.in_diet = in_diet
+        db.session.commit()
+        return meal
