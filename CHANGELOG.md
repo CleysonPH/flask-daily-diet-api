@@ -1,3 +1,10 @@
+## 0.3.0 (2024-01-18)
+
+### Feat
+
+- add create meal route
+- add meal model
+
 ## 0.2.0 (2024-01-18)
 
 ### Feat
