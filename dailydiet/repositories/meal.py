@@ -22,3 +22,8 @@ class MealRepository:
     @staticmethod
     def get_by_id(id):
         return db.session.get(Meal, id)
+
+    @staticmethod
+    def delete(meal):
+        db.session.delete(meal)
+        db.session.commit()
