@@ -1,3 +1,10 @@
+## 0.5.0 (2024-01-18)
+
+### Feat
+
+- add get meal by id route
+- add get by id in meal repository
+
 ## 0.4.0 (2024-01-18)
 
 ### Feat
