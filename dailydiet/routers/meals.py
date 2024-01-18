@@ -40,3 +40,19 @@ def delete(id):
         MealRepository.delete(meal)
         return {}, 204
     return {"message": "Meal not found"}, 404
+
+
+@bp.route("/<int:id>", methods=("PUT",))
+def update(id):
+    meal = MealRepository.get_by_id(id)
+    if meal:
+        data = request.get_json()
+        meal = MealRepository.update(
+            meal,
+            name=data["name"],
+            description=data["description"],
+            datetime=datetime.fromisoformat(data["datetime"]),
+            in_diet=data["in_diet"],
+        )
+        return meal.to_dict()
+    return {"message": "Meal not found"}, 404
