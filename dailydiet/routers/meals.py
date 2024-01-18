@@ -23,3 +23,11 @@ def create():
 def get_all():
     meals = MealRepository.get_all()
     return {"meals": [meal.to_dict() for meal in meals]}
+
+
+@bp.route("/<int:id>", methods=("GET",))
+def get_by_id(id):
+    meal = MealRepository.get_by_id(id)
+    if meal:
+        return meal.to_dict()
+    return {"message": "Meal not found"}, 404
