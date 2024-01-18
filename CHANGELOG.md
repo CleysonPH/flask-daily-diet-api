@@ -1,3 +1,10 @@
+## 0.6.0 (2024-01-18)
+
+### Feat
+
+- add delete meal by id route
+- add delete in meal repository
+
 ## 0.5.0 (2024-01-18)
 
 ### Feat
