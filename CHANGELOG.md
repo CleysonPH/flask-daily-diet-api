@@ -1,3 +1,10 @@
+## 0.7.0 (2024-01-18)
+
+### Feat
+
+- add update meal by id route
+- add update in meal repository
+
 ## 0.6.0 (2024-01-18)
 
 ### Feat
