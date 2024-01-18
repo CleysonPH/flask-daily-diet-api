@@ -17,3 +17,9 @@ def create():
         in_diet=data["in_diet"],
     )
     return meal.to_dict(), 201
+
+
+@bp.route("", methods=("GET",))
+def get_all():
+    meals = MealRepository.get_all()
+    return {"meals": [meal.to_dict() for meal in meals]}
