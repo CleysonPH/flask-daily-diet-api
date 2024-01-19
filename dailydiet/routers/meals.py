@@ -3,13 +3,18 @@ from datetime import datetime
 from flask import Blueprint, request
 
 from dailydiet.repositories.meal import MealRepository
+from dailydiet.validaton.errors import ValidationError
+from dailydiet.validaton.meal import MealValidator
 
 bp = Blueprint("meals", __name__, url_prefix="/api/meals")
 
 
 @bp.route("", methods=("POST",))
 def create():
-    data = request.get_json()
+    try:
+        data = MealValidator.validate_create_meal(request.get_json())
+    except ValidationError as e:
+        return e.to_dict(), 400
     meal = MealRepository.create(
         name=data["name"],
         description=data["description"],
