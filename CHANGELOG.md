@@ -1,3 +1,10 @@
+## 0.8.0 (2024-01-19)
+
+### Feat
+
+- add validation for update meal route
+- add validation in create meal
+
 ## 0.7.0 (2024-01-18)
 
 ### Feat
