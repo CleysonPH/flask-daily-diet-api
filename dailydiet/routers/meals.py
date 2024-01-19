@@ -51,7 +51,10 @@ def delete(id):
 def update(id):
     meal = MealRepository.get_by_id(id)
     if meal:
-        data = request.get_json()
+        try:
+            data = MealValidator.validate_update_meal(request.get_json())
+        except ValidationError as e:
+            return e.to_dict(), 400
         meal = MealRepository.update(
             meal,
             name=data["name"],

@@ -25,3 +25,10 @@ class MealValidator:
             return MealValidator.BaseMeal(**data).model_dump()
         except PydanticValidationError as e:
             raise convert_pydantic_validation_error_to_field_errors(e)
+
+    @staticmethod
+    def validate_update_meal(data):
+        try:
+            return MealValidator.BaseMeal(**data).model_dump()
+        except PydanticValidationError as e:
+            raise convert_pydantic_validation_error_to_field_errors(e)

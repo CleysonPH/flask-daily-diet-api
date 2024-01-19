@@ -84,6 +84,20 @@ def test_update_meal(client, meals):
     assert response.json["description"] == request_body["description"]
 
 
+def test_update_meal_invalid_data(client, meals):
+    meal = meals[0]
+    request_body = {
+        "description": "A",
+        "datetime": "2019-01-01T08:00:00.000 ss",
+        "in_diet": False,
+    }
+    response = client.put(f"/api/meals/{meal.id}", json=request_body)
+    assert response.status_code == 400
+    assert "name" in response.json["errors"]
+    assert "description" in response.json["errors"]
+    assert "datetime" in response.json["errors"]
+
+
 def test_update_meal_not_found(client):
     request_body = {
         "name": "Breakfast Edited",
